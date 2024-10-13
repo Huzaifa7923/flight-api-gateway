@@ -1,7 +1,7 @@
 const error={
     success:false,
+    message:'Something went wrong',
     data:{},
-    error:{},
-    message:"Successfully completed the request"
+    error:{}
 }
 module.exports=error;
