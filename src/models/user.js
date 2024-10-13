@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 'use strict';
 const {
   Model
@@ -30,5 +31,13 @@ module.exports = (sequelize, DataTypes) => {
     sequelize,
     modelName: 'User',
   });
+  User.beforeCreate( async(user) => {
+    // console.log(user);
+    const hashedPassword=await bcrypt.hash(user.password,5);
+    user.password=hashedPassword;
+    // console.log(user);
+  });
+
   return User;
 };
+
