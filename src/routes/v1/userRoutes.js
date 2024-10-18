@@ -1,10 +1,13 @@
 const { UserController } = require('../../controllers');
+const { UserMiddleware } = require('../../middlewares');
 
 const router=require('express').Router();
 
 
 router.post('/signin',UserController.loginUser);
-// api/v1/user/
+router.get('/private',UserMiddleware.validateUser,(req,res)=>{
+    res.json({acceess:true})
+});
 router.post('/',UserController.createUser);
 
 
